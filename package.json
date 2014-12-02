@@ -1,0 +1,22 @@
+{
+  "name": "isitsnowinginberlin",
+  "version": "0.0.1",
+  "description": "Running the isitsnowinginberlin.de website",
+  "main": "isitsnowinginberlin.js",
+  "scripts": {
+    "start": "node isitsnowinginberlin.js"
+  },
+  "dependencies": {
+    "request": "~2.49",
+    "restify": "~2.8.x"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jerr0328/isitsnowinginberlin"
+  },
+  "license": "Apache-2.0",
+  "author": "Jeremy Mayeres"
+}
