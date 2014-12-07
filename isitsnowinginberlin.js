@@ -36,6 +36,15 @@ function getWeather(callback) {
   });
 }
 
+function getWeatherNoUpdate(callback) {
+  client.get("last-wx", function (err, reply) {
+    if(reply) {
+      wx = JSON.parse(reply);
+      callback(wx);
+    }
+  });
+}
+
 function updateWeather(storeWx, callback) {
   request(weatherApiOptions, function (error, response, body){
     if(!error && response.statusCode == 200){
@@ -50,12 +59,11 @@ function updateWeather(storeWx, callback) {
 };
 
 function isSnowing(wx) {
-  return wx.weather.reduce(function(previousValue, currentValue, index, array){
-    // If the previousValue is true, no need to check, keep passing true
-    if(previousValue) return previousValue;
+  // Check if some element from the weather array has snow
+  return wx.weather.some(function(element, index, array){
     // Check if the current value shows snow
-    return "Snow" == currentValue.main;
-  }, false);
+    return "Snow" == element.main;
+  });
 }
 
 function APIisSnowing(req, res, next) {
@@ -65,12 +73,21 @@ function APIisSnowing(req, res, next) {
     else
       res.send({isSnowing: false});
   });
+  next();
 }
 
 function APIgetRawWeather(req, res, next) {
   getWeather(function (wx){
     res.send(wx);
   });
+  next();
+}
+
+function APIgetRawWeatherNoUpdate(req, res, next) {
+  getWeatherNoUpdate(function (wx){
+    res.send(wx);
+  });
+  next();
 }
 
 function respond(req, res, next) {
@@ -101,6 +118,8 @@ server.get("/api/isSnowing", APIisSnowing);
 server.head("/api/isSnowing", APIisSnowing);
 server.get("/api/rawWeather", APIgetRawWeather);
 server.head("/api/rawWeather", APIgetRawWeather);
+server.get("/api/noUpdate/rawWeather", APIgetRawWeatherNoUpdate);
+server.head("/api/noUpdate/rawWeather", APIgetRawWeatherNoUpdate);
 
 server.listen(process.env.PORT || 5000, function() {
   console.log('%s listening at %s', server.name, server.url);
