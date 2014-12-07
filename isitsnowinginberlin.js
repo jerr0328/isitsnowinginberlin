@@ -50,7 +50,12 @@ function updateWeather(storeWx, callback) {
 };
 
 function isSnowing(wx) {
-  return "Snow" == wx.weather[0].main;
+  return wx.weather.reduce(function(previousValue, currentValue, index, array){
+    // If the previousValue is true, no need to check, keep passing true
+    if(previousValue) return previousValue;
+    // Check if the current value shows snow
+    return "Snow" == currentValue.main;
+  }, false);
 }
 
 function APIisSnowing(req, res, next) {
