@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "request": "~2.49",
-    "restify": "~2.8.x"
+    "restify": "~2.8.x",
+    "redis": "~0.12.1"
   },
   "engines": {
     "node": "0.10.x"
