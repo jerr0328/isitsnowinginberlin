@@ -75,7 +75,7 @@ function respond(req, res, next) {
       body += "Yes"
     else
       body += "No"
-    body += "</h1><p>Data last updated: " + new Date(wx.dt).toString() + "</p></body></html>"
+    body += "</h1><p>Data last updated: " + new Date(wx.dt * 1000).toString() + "</p></body></html>"
     res.writeHead(200, {
       'Content-Length': Buffer.byteLength(body),
       'Content-Type': 'text/html'
