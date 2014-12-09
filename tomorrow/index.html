@@ -8,9 +8,9 @@ function snowingController($scope, $http){
     $http.get("/api/willSnow")
     .success(function (data, status, headers, config) {
         if(data.willSnow)
-            $scope.willSnow = "Yes";
+            $scope.willSnow = "Possibly!";
         else
-            $scope.willSnow = "No";
+            $scope.willSnow = "Not likely";
 
         $scope.updateTimestamp = new Date(data.dataUpdated * 1000).toString();
     })
