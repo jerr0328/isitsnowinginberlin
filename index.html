@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<script>
+function isSnowingController($scope, $http){
+    $http.get("/api/isSnowing")
+    .success(function (data, status, headers, config) {
+        if(data.isSnowing)
+            $scope.isSnowingYesNo = "Yes";
+        else
+            $scope.isSnowingYesNo = "No";
+
+        $scope.updateTimestamp = new Date(data.dataUpdated * 1000).toString();
+    })
+    .error(function (data, status, headers, config) {
+        $scope.isSnowingYesNo = "Error";
+    });
+}
+</script>
+<title>Is it snowing in Berlin?</title>
+</head>
+
+<body>
+
+<div ng-app="" ng-controller="isSnowingController">
+    <h1 ng-bind="isSnowingYesNo" style="text-align: center;"></h1>
+    <p>Data updated: {{updateTimestamp}}</p>
+</div>
+
+
+
+</body>
+</html>
