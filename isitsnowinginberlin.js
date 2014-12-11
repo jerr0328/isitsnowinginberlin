@@ -211,17 +211,17 @@ server.head("/tomorrow", restify.serveStatic({
   default: 'index.html'
 }));
 server.get("/static\/.+", restify.serveStatic({
-  directory: '.',
+  directory: __dirname,
 }));
 server.head("/static\/.+", restify.serveStatic({
-  directory: '.',
+  directory: __dirname,
 }));
 server.get("/", restify.serveStatic({
-  directory: '.',
+  directory: __dirname,
   default: 'index.html'
 }));
 server.head("/", restify.serveStatic({
-  directory: '.',
+  directory: __dirname,
   default: 'index.html'
 }));
 
