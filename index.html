@@ -2,34 +2,34 @@
 <html>
 
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-<script>
-function isSnowingController($scope, $http){
-    $http.get("/api/isSnowing")
-    .success(function (data, status, headers, config) {
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=0.75, maximum-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+  <script>
+    function isSnowingController($scope, $http){
+      $http.get("/api/isSnowing")
+      .success(function (data, status, headers, config) {
         if(data.isSnowing)
-            $scope.isSnowingYesNo = "Yes";
+          $scope.isSnowingYesNo = "Yes";
         else
-            $scope.isSnowingYesNo = "No";
+          $scope.isSnowingYesNo = "No";
 
         $scope.updateTimestamp = new Date(data.dataUpdated * 1000).toString();
-    })
-    .error(function (data, status, headers, config) {
+      })
+      .error(function (data, status, headers, config) {
         $scope.isSnowingYesNo = "Error";
-    });
-}
-</script>
-<title>Is it snowing in Berlin?</title>
+      });
+    }
+  </script>
+  <title>Is it snowing in Berlin?</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-
 <body>
-
-<div ng-app="" ng-controller="isSnowingController">
-    <h1 ng-bind="isSnowingYesNo" style="text-align: center;"></h1>
-    <p>Data updated: {{updateTimestamp}}</p>
-</div>
-
-
-
+  <div id="bgimage"></div>
+  <div  id="content" ng-app="" ng-controller="isSnowingController">
+    <h1 id="answer" ng-bind="isSnowingYesNo" style="text-align: center;"></h1>
+    <div id="update">Data updated: {{updateTimestamp}} - powered by <a href="http://openweathermap.org/" target="_blank">OpenWeatherMap</a></div>
+    <div id="github"><a href="https://github.com/jerr0328/isitsnowinginberlin" target="_blank">&nbsp;</a></div>
+  </div>
 </body>
 </html>
