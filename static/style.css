@@ -39,7 +39,7 @@ a:hover {
   height: 100%;
   bottom: 0;
   left: 0;
-  background-image: url('static/skyline-berlin.svg');
+  background-image: url('skyline-berlin.svg');
   background-repeat: no-repeat;
   background-position: center bottom;
   background-size: 100%;
