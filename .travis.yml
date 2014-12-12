@@ -5,6 +5,6 @@ deploy:
   provider: heroku
   api_key:
     secure: en/w20ryaWF/n/dKqEsXsmgdcsFtABMjNdODlhbObFvkjefZXyRWANOd8Pu3cUcGRKp8bZYpZIGbexG34+Rdb/XmEwP91ghTGSyUU3hCM52+dZ1QG9A91JQaIMX+8QHgV4D4bMicBBaCaICGgsWBSenoID/DwtybNcXLbqPgrik=
-  app: infinite-wave-2033
+  app: isitsnowinginberlin
   on:
     repo: jerr0328/isitsnowinginberlin

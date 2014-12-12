@@ -120,8 +120,15 @@ function isSnowing(wx) {
 
 function willSnow(forecast) {
   // Check if some element from the forecast has snow
+  today = new Date();
   return forecast.list.some(function (element, index, array){
-    return element.weather.some(someMainIsSnow);
+    forecastTime = new Date(element.dt * 1000);
+    // Only count forecasts in the future,
+    // since sometimes the forecast is for current day
+    if(forecastTime > today)
+      return element.weather.some(someMainIsSnow);
+    else
+      return false;
   });
 }
 
@@ -169,26 +176,7 @@ function APIgetRawForecastNoUpdate(req, res, next) {
   next();
 }
 
-function respond(req, res, next) {
-  getWeather(function (wx) {
-    var body = "<html><head><title>Is it snowing in Berlin?</title><body><h1 style=\"text-align: center\">";
-    if(isSnowing(wx))
-      body += "Yes"
-    else
-      body += "No"
-    body += "</h1><p>Data last updated: " + new Date(wx.dt * 1000).toString() + "</p></body></html>"
-    res.writeHead(200, {
-      'Content-Length': Buffer.byteLength(body),
-      'Content-Type': 'text/html'
-    });
-    res.write(body);
-    res.end();
-  })
-
-  next();
-}
-console.log("Getting initial value: ");
-getWeather(console.log);
+console.log("isitsnowinginberlin starting");
 
 var server = restify.createServer();
 server.get("/api/isSnowing", APIisSnowing);
