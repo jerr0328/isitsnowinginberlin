@@ -8,11 +8,36 @@ html, body {
 }
 
 body {
-  background-color: #B4E8E8;
+  background-color: #efefef;
   font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 100;
   text-align: center;
   height: 100%;
+}
+
+/* below -10 */
+.temp00 {
+  background-color: #268FCC;
+}
+/* from -10 - 0 */
+.temp01 {
+  background-color: #6BE1F2;
+}
+/* from 1 - 10 */
+.temp02 {
+  background-color: #82CCB2;
+}
+/* from 11 - 20 */
+.temp03 {
+  background-color: #9ABD66;
+}
+/* from 21 - 30 */
+.temp04 {
+  background-color: #E8BB49;
+}
+/* from 31 - ... */
+.temp05 {
+  background-color: #E08522;
 }
 
 a {
