@@ -7,6 +7,7 @@
     "start": "node isitsnowinginberlin.js"
   },
   "dependencies": {
+    "nodetime": "~0.8.15",
     "request": "~2.49",
     "restify": "~2.8.x",
     "redis": "~0.12.1"
