@@ -2,34 +2,36 @@
 <html>
 
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-<script>
-function snowingController($scope, $http){
-    $http.get("/api/willSnow")
-    .success(function (data, status, headers, config) {
-        if(data.willSnow)
-            $scope.willSnow = "Possibly!";
-        else
-            $scope.willSnow = "Not likely";
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=0.75, maximum-scale=1">
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+  <script>
+  function snowingController($scope, $http){
+      $http.get("/api/willSnow")
+      .success(function (data, status, headers, config) {
+          if(data.willSnow)
+              $scope.willSnow = "Possibly!";
+          else
+              $scope.willSnow = "Not likely";
 
-        $scope.updateTimestamp = new Date(data.dataUpdated * 1000).toString();
-    })
-    .error(function (data, status, headers, config) {
-        $scope.willSnow = "Error";
-    });
-}
-</script>
-<title>Is it snowing in Berlin?</title>
+          $scope.updateTimestamp = new Date(data.dataUpdated * 1000).toString();
+      })
+      .error(function (data, status, headers, config) {
+          $scope.willSnow = "Error";
+      });
+  }
+  </script>
+  <title>Is it snowing in Berlin Tomorrow?</title>
+  <link rel="stylesheet" type="text/css" href="/static/style.css">
+  <link href="/static/favicon.ico" rel="icon" type="image/x-icon" />
 </head>
 
 <body>
-
+<div id="bgimage"></div>
 <div ng-app="" ng-controller="snowingController">
-    <h1 ng-bind="willSnow" style="text-align: center;"></h1>
-    <p>Forecast for date/time: {{updateTimestamp}}</p>
+    <h1 ng-bind="willSnow" style="text-align: center;" id="answer"></h1>
+    <div id="update">Data updated: {{updateTimestamp}} - using <a href="http://openweathermap.org/" target="_blank">OpenWeatherMap</a></div>
+    <div id="github"><a href="https://github.com/jerr0328/isitsnowinginberlin" target="_blank">&nbsp;</a></div>
 </div>
-
-
-
 </body>
 </html>
