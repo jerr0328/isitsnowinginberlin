@@ -12,6 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// Monitoring tool
+if(process.env.NODETIME_ACCOUNT_KEY) {
+  require('nodetime').profile({
+    accountKey: process.env.NODETIME_ACCOUNT_KEY,
+    appName: 'Is it snowing in Berlin' // optional
+  });
+}
 var request = require('request');
 var restify = require('restify');
 var redis = require('redis');

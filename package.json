@@ -1,6 +1,6 @@
 {
   "name": "isitsnowinginberlin",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "Running the isitsnowinginberlin.de website",
   "main": "isitsnowinginberlin.js",
   "scripts": {
