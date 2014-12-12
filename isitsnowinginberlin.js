@@ -21,6 +21,7 @@ var client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_chec
 client.auth(redisURL.auth.split(":")[1]);
 // Update delay in seconds (10 minutes)
 var updateDelaySeconds = 600;
+var kelvin = 273.15;
 
 // Berlin city code for weather is 2950159
 var weatherApiOptions = {
@@ -127,7 +128,7 @@ function willSnow(forecast) {
 function APIisSnowing(req, res, next) {
   getWeather(function (wx) {
     var snowCheck = isSnowing(wx);
-    res.send({isSnowing: snowCheck, dataUpdated: wx.dt});
+    res.send({isSnowing: snowCheck, dataUpdated: wx.dt, temperature: wx.main.temp - kelvin});
   });
   next();
 }
