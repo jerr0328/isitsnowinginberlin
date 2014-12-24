@@ -16,7 +16,7 @@
 if(process.env.NODETIME_ACCOUNT_KEY) {
   require('nodetime').profile({
     accountKey: process.env.NODETIME_ACCOUNT_KEY,
-    appName: 'Is it snowing in Berlin' // optional
+    appName: 'Is it snowing in Berlin ' + process.env.ENV_TYPE // optional
   });
 }
 var request = require('request');
@@ -183,7 +183,14 @@ function APIgetRawForecastNoUpdate(req, res, next) {
   next();
 }
 
-console.log("isitsnowinginberlin starting");
+function APIflushCache(req, res, next) {
+  client.del("cached-wx");
+  client.del("cached-forecast");
+  res.send({success: true});
+  next();
+}
+
+console.log(process.env.ENV_TYPE + " isitsnowinginberlin starting");
 
 var server = restify.createServer();
 server.get("/api/isSnowing", APIisSnowing);
@@ -198,6 +205,8 @@ server.get("/api/rawForecast", APIgetRawForecast);
 server.head("/api/rawWeather", APIgetRawForecast);
 server.get("/api/noUpdate/rawForecast", APIgetRawForecastNoUpdate);
 server.head("/api/noUpdate/rawWeather", APIgetRawForecastNoUpdate);
+server.get("/api/flushCache", APIflushCache);
+server.head("/api/flushCache", APIflushCache);
 server.get("/tomorrow", restify.serveStatic({
   directory: __dirname,
   default: 'index.html'
