@@ -1,12 +1,13 @@
 {
   "name": "isitsnowinginberlin",
-  "version": "0.0.1",
+  "version": "0.1.4",
   "description": "Running the isitsnowinginberlin.de website",
   "main": "isitsnowinginberlin.js",
   "scripts": {
     "start": "node isitsnowinginberlin.js"
   },
   "dependencies": {
+    "nodetime": "~0.8.15",
     "request": "~2.49",
     "restify": "~2.8.x",
     "redis": "~0.12.1"

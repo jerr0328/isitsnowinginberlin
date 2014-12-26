@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=0.75, maximum-scale=1">
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+  <script>
+    function isSnowingController($scope, $http){
+      $http.get("/api/isSnowing")
+      .success(function (data, status, headers, config) {
+        if(data.isSnowing) {
+          $scope.isSnowingYesNo = "Yes";
+          makeItSnow();
+        }
+        else {
+          $scope.isSnowingYesNo = "No";
+        }
+
+        $scope.updateTimestamp = new Date(data.dataUpdated * 1000).toString();
+
+        if(data.temperature < -10) $scope.temp = "temp00";
+        else if(data.temperature < 0) $scope.temp = "temp01";
+        else if(data.temperature < 10) $scope.temp = "temp02";
+        else if(data.temperature < 20) $scope.temp = "temp03";
+        else if(data.temperature < 30) $scope.temp = "temp04";
+        else $scope.temp = "temp05";
+      })
+      .error(function (data, status, headers, config) {
+        $scope.isSnowingYesNo = "Error";
+      });
+    }
+
+    // Credit: http://thecodeplayer.com/walkthrough/html5-canvas-snow-effect
+    makeItSnow = function(){
+      //canvas init
+      var canvas = document.getElementById("canvas");
+      var ctx = canvas.getContext("2d");
+
+      //canvas dimensions
+      var W = window.innerWidth;
+      var H = window.innerHeight;
+      canvas.width = W;
+      canvas.height = H;
+
+      //snowflake particles
+      var mp = 30; //max particles
+      var particles = [];
+      for(var i = 0; i < mp; i++)
+      {
+        particles.push({
+          x: Math.random()*W, //x-coordinate
+          y: Math.random()*H, //y-coordinate
+          r: Math.random()*4+1, //radius
+          d: Math.random()*mp //density
+        })
+      }
+
+      //Lets draw the flakes
+      function draw()
+      {
+        ctx.clearRect(0, 0, W, H);
+
+        ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+        ctx.beginPath();
+        for(var i = 0; i < mp; i++)
+        {
+          var p = particles[i];
+          ctx.moveTo(p.x, p.y);
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI*2, true);
+        }
+        ctx.fill();
+        update();
+      }
+
+      //Function to move the snowflakes
+      //angle will be an ongoing incremental flag. Sin and Cos functions will be applied to it to create vertical and horizontal movements of the flakes
+      var angle = 0;
+      function update()
+      {
+        angle += 0.01;
+        for(var i = 0; i < mp; i++)
+        {
+          var p = particles[i];
+          //Updating X and Y coordinates
+          //We will add 1 to the cos function to prevent negative values which will lead flakes to move upwards
+          //Every particle has its own density which can be used to make the downward movement different for each flake
+          //Lets make it more random by adding in the radius
+          p.y += Math.cos(angle+p.d) + 1 + p.r/2;
+          p.x += Math.sin(angle) * 2;
+
+          //Sending flakes back from the top when it exits
+          //Lets make it a bit more organic and let flakes enter from the left and right also.
+          if(p.x > W+5 || p.x < -5 || p.y > H)
+          {
+            if(i%3 > 0) //66.67% of the flakes
+            {
+              particles[i] = {x: Math.random()*W, y: -10, r: p.r, d: p.d};
+            }
+            else
+            {
+              //If the flake is exitting from the right
+              if(Math.sin(angle) > 0)
+              {
+                //Enter from the left
+                particles[i] = {x: -5, y: Math.random()*H, r: p.r, d: p.d};
+              }
+              else
+              {
+                //Enter from the right
+                particles[i] = {x: W+5, y: Math.random()*H, r: p.r, d: p.d};
+              }
+            }
+          }
+        }
+      }
+
+      //animation loop
+      setInterval(draw, 33);
+    }
+  </script>
+  <title>Is it snowing in Berlin?</title>
+  <link rel="stylesheet" type="text/css" href="./static/style.css">
+  <link href="./static/favicon.ico" rel="icon" type="image/x-icon" />
+</head>
+<body ng-class="temp" ng-app="" ng-controller="isSnowingController">
+  <canvas id="canvas"></canvas>
+  <div id="bgimage"></div>
+  <div id="content">
+    <h1 id="answer" ng-bind="isSnowingYesNo" style="text-align: center;"></h1>
+    <div id="update">Data updated: {{updateTimestamp}} - using <a href="http://openweathermap.org/" target="_blank">OpenWeatherMap</a></div>
+    <div id="github"><a href="https://github.com/jerr0328/isitsnowinginberlin" target="_blank">&nbsp;</a></div>
+  </div>
+</body>
+</html>
