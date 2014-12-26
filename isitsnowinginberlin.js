@@ -150,7 +150,7 @@ function APIisSnowing(req, res, next) {
 function APIwillSnow(req, res, next) {
   getForecast(function (forecast) {
     var snowCheck = willSnow(forecast);
-    res.send({willSnow: snowCheck, dataUpdated: forecast.list[0].dt});
+    res.send({willSnow: snowCheck, dataUpdated: forecast.list[1].dt});
   });
   next();
 }
