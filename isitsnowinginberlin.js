@@ -30,6 +30,10 @@ client.auth(redisURL.auth.split(":")[1]);
 var updateDelaySeconds = 600;
 var kelvin = 273.15;
 
+client.on("error", function (err) {
+  console.error("Redis " + err);
+});
+
 // Berlin city code for weather is 2950159
 var weatherApiOptions = {
   url: "http://api.openweathermap.org/data/2.5/weather?id=2950159",
@@ -107,6 +111,7 @@ function updateWeather(options, storeWx, callback) {
   request(options, function (error, response, body){
     if(!error && response.statusCode == 200){
       wx = JSON.parse(body);
+      console.log("Got weather for dt " + wx.dt);
       storeWx(body);
       callback(wx);
     }
