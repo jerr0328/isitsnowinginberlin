@@ -12,13 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Monitoring tool
-if(process.env.NODETIME_ACCOUNT_KEY) {
-  require('nodetime').profile({
-    accountKey: process.env.NODETIME_ACCOUNT_KEY,
-    appName: 'Is it snowing in Berlin ' + process.env.ENV_TYPE // optional
-  });
-}
 var request = require('request');
 var restify = require('restify');
 var redis = require('redis');
@@ -29,6 +22,10 @@ client.auth(redisURL.auth.split(":")[1]);
 // Update delay in seconds (10 minutes)
 var updateDelaySeconds = 600;
 var kelvin = 273.15;
+
+client.on("error", function (err) {
+  console.error("Redis " + err);
+});
 
 // Berlin city code for weather is 2950159
 var weatherApiOptions = {
@@ -107,6 +104,7 @@ function updateWeather(options, storeWx, callback) {
   request(options, function (error, response, body){
     if(!error && response.statusCode == 200){
       wx = JSON.parse(body);
+      console.log("Got weather for dt " + wx.dt);
       storeWx(body);
       callback(wx);
     }

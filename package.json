@@ -1,19 +1,18 @@
 {
   "name": "isitsnowinginberlin",
-  "version": "0.1.4",
+  "version": "1.0.0",
   "description": "Running the isitsnowinginberlin.de website",
   "main": "isitsnowinginberlin.js",
   "scripts": {
     "start": "node isitsnowinginberlin.js"
   },
   "dependencies": {
-    "nodetime": "~0.8.15",
-    "request": "~2.49",
-    "restify": "~2.8.x",
-    "redis": "~0.12.1"
+    "request": "^2.53.0",
+    "restify": "^3.0.0",
+    "redis": "^0.12.1"
   },
   "engines": {
-    "node": "0.10.x"
+    "node": "0.12.x"
   },
   "repository": {
     "type": "git",
