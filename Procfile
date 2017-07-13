@@ -1,1 +1,1 @@
-web: node isitsnowinginberlin.js
+web: gunicorn isitsnowinginberlin:APP --log-file -
