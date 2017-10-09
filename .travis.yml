@@ -1,0 +1,5 @@
+language: python
+install:
+  - pip install -r requirements.txt
+python:
+  - '3.6'
