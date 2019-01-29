@@ -31,12 +31,11 @@ APP.config['REDIS_URL'] = os.getenv('REDIS_URL')
 redis_store = FlaskRedis(APP)
 # Update delay in seconds (10 minutes)
 UPDATE_DELAY_SECONDS = 600
-OWM_URL = "http://api.openweathermap.org/data/2.5/weather"
-OWM_FORECAST_URL = "http://api.openweathermap.org/data/2.5/forecast/daily"
-OWM_HEADERS = {'x-api-key': os.getenv('OWMAPIKEY')}
-OWM_PAYLOAD = {'id': 2950159}
-OWM_FORECAST_PAYLOAD = {'id': 2950159, 'cnt': 2}
-KELVIN = 273.15
+DARKSKY_URL = "https://api.darksky.net/forecast/{key}/{coords}".format(
+    key=os.getenv('DARKSKY_KEY'), coords="52.52,13.37"
+)
+DARKSKY_PAYLOAD = {'units': 'si', 'exclude': '[minutely,hourly,flags,alerts]'}
+
 logger = logging.getLogger('isitsnowinginberlin')
 
 
@@ -49,30 +48,12 @@ def save_current_to_redis(wx):
         pipe.execute()
 
 
-def save_forecast_to_redis(wx):
-    wx_str = json.dumps(wx)
-    with redis_store.pipeline() as pipe:
-        pipe.set('cached-forecast', wx_str)
-        pipe.expire('cached-forecast', UPDATE_DELAY_SECONDS)
-        pipe.set('last-forecast', wx_str)
-        pipe.execute()
-
-
 def update_weather(update_redis=True):
-    r = requests.get(OWM_URL, params=OWM_PAYLOAD, headers=OWM_HEADERS)
+    r = requests.get(DARKSKY_URL, params=DARKSKY_PAYLOAD)
     r.raise_for_status()
     wx = r.json()
     if update_redis:
         save_current_to_redis(wx)
-    return wx
-
-
-def update_forecast(update_redis=True):
-    r = requests.get(OWM_FORECAST_URL, params=OWM_FORECAST_PAYLOAD, headers=OWM_HEADERS)
-    r.raise_for_status()
-    wx = r.json()
-    if update_redis:
-        save_forecast_to_redis(wx)
     return wx
 
 
@@ -86,28 +67,19 @@ def get_weather(key='cached-wx', update_redis=True):
         return update_weather(update_redis)
 
 
-def get_forecast(key='cached-forecast', update_redis=True):
-    cached_str = redis_store.get(key)
-    if cached_str:
-        logger.info("Using cached forecast")
-        return json.loads(cached_str)
-    else:
-        logger.info("Need to fetch forecast")
-        return update_forecast(update_redis)
-
-
 def is_snowing(wx):
-    return any("Snow" in item['main'] for item in wx['weather'])
+    return wx['currently']['icon'] == 'snow'
 
 
-def will_snow(forecast):
+def will_snow(wx):
     now = datetime.now()
-    return any(is_snowing(element) for element in forecast['list'] if now < datetime.fromtimestamp(element['dt']))
+    next_forecast = next(data for data in wx['daily']['data'] if now < datetime.fromtimestamp(data['time']))
+    return next_forecast['icon'] == 'snow'
 
 
 @APP.route('/api/flushCache')
 def api_flush_cache():
-    redis_store.delete('cached-wx', 'cached-forecast')
+    redis_store.delete('cached-wx')
     return flask.jsonify({'success': True})
 
 
@@ -121,33 +93,23 @@ def api_raw_weather():
     return flask.jsonify(get_weather())
 
 
-@APP.route('/api/noUpdate/rawForecast')
-def api_raw_forecast_no_update():
-    return flask.jsonify(get_forecast('last-forecast', False))
-
-
-@APP.route('/api/rawForecast')
-def api_raw_forecast():
-    return flask.jsonify(get_forecast())
-
-
 @APP.route('/api/isSnowing')
 def api_is_snowing():
     wx = get_weather()
     obj = {
         'isSnowing': is_snowing(wx),
-        'dataUpdated': wx['dt'],
-        'temperature': wx['main']['temp'] - KELVIN
+        'dataUpdated': wx['currently']['time'],
+        'temperature': wx['currently']['temperature']
     }
     return flask.jsonify(obj)
 
 
 @APP.route('/api/willSnow')
 def api_will_snow():
-    forecast = get_forecast()
+    wx = get_weather()
     obj = {
-        'willSnow': will_snow(forecast),
-        'dataUpdated': forecast['list'][1]['dt']
+        'willSnow': will_snow(wx),
+        'dataUpdated': wx['currently']['time']
     }
     return flask.jsonify(obj)
 
