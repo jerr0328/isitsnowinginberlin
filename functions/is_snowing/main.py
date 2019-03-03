@@ -16,4 +16,7 @@ def is_snowing(request):
         'dataUpdated': wx['currently']['time'],
         'temperature': wx['currently']['temperature']
     }
-    return flask.jsonify(obj)
+    response = flask.jsonify(obj)
+    response.headers.set('Access-Control-Allow-Origin', '*')
+    response.headers.set('Access-Control-Allow-Methods', 'GET')
+    return response

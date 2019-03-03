@@ -23,4 +23,7 @@ def will_snow(request):
         'willSnow': wx['currently']['icon'] == 'snow',
         'dataUpdated': wx['currently']['time'],
     }
-    return flask.jsonify(obj)
+    response = flask.jsonify(obj)
+    response.headers.set('Access-Control-Allow-Origin', '*')
+    response.headers.set('Access-Control-Allow-Methods', 'GET')
+    return response
