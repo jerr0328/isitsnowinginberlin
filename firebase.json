@@ -1,0 +1,26 @@
+{
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "Pipfile*",
+      "functions/**",
+      "**/*.py",
+      "Procfile",
+      "requirements.txt",
+      "README.md"
+    ],
+    "rewrites": [ {
+      "source": "/api/isSnowing",
+      "function": "is_snowing"
+    }, {
+      "source": "/api/willSnow",
+      "function": "will_snow"
+    }, {
+      "source": "/api/rawWeather",
+      "function": "get_weather_data"
+    } ]
+  }
+}
