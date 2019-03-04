@@ -14,13 +14,13 @@
     ],
     "rewrites": [ {
       "source": "/api/isSnowing",
-      "function": "is_snowing"
+      "function": "isSnowing"
     }, {
       "source": "/api/willSnow",
-      "function": "will_snow"
+      "function": "willSnow"
     }, {
       "source": "/api/rawWeather",
-      "function": "get_weather_data"
+      "function": "rawWeather"
     } ]
   }
 }
