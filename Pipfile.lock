@@ -47,11 +47,11 @@
         },
         "flask-redis": {
             "hashes": [
-                "sha256:56ebd5e69a42988e9a7a904f07b37cd625a7dbcdfbfe31797885c3c4a92516f5",
-                "sha256:ffb8e636c7af0226a3074860200602850a5a871169bc53fcde05b7d973aad714"
+                "sha256:8d79eef4eb1217095edab603acc52f935b983ae4b7655ee7c82c0dfd87315d17",
+                "sha256:e1fccc11e7ea35c2a4d68c0b9aa58226a098e45e834d615c7b6c4928b01ddd6c"
             ],
             "index": "pypi",
-            "version": "==0.3.0"
+            "version": "==0.4.0"
         },
         "gunicorn": {
             "hashes": [
