@@ -1,8 +1,0 @@
-[requires]
-python_version = '3.6'
-
-[packages]
-flask = "*"
-requests = "*"
-flask-redis = "*"
-gunicorn = "*"
