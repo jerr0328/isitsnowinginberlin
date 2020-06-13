@@ -5,7 +5,8 @@ updates:
   schedule:
     interval: weekly
     day: friday
-    time: '17:00'
+    time: "17:00"
+    timezone: "Europe/Berlin"
   open-pull-requests-limit: 10
   reviewers:
   - jerr0328
