@@ -1,4 +1,4 @@
-flask
-requests
-flask-redis
-gunicorn
+aioredis
+fastapi[all]
+fastapi_camelcase
+httpx
