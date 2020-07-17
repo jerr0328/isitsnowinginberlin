@@ -25,10 +25,11 @@ from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi_camelcase import CamelModel
+from pydantic import Field
 
 logging.basicConfig()
 logger = logging.getLogger("isitsnowinginberlin")
-app = FastAPI()
+app = FastAPI(title="Is it Snowing in Berlin")
 
 BERLIN_COORDS = "52.52,13.37"
 UPDATE_DELAY_SECONDS = 600  # Update delay in seconds (10 minutes)
@@ -41,14 +42,18 @@ CACHE_KEY = "cached-wx"
 
 
 class SnowingResponse(CamelModel):
-    is_snowing: bool
-    data_updated: int
-    temperature: float
+    is_snowing: bool = Field(..., description="Flag if snowing")
+    data_updated: int = Field(
+        ..., description="Timestamp (seconds) of when the data was updated"
+    )
+    temperature: float = Field(..., description="Temperature in Celsius")
 
 
 class WillSnowResponse(CamelModel):
-    will_snow: bool
-    data_updated: int
+    will_snow: bool = Field(..., description="Flag if will snow")
+    data_updated: int = Field(
+        ..., description="Timestamp (seconds) of when the data was updated"
+    )
 
 
 async def store_weather(wx: dict):
@@ -97,11 +102,13 @@ async def setup():
 
 @app.get("/api/rawWeather")
 async def api_raw_weather():
+    """Return the data retrieved from the weather service."""
     return await get_weather()
 
 
 @app.get("/api/isSnowing", response_model=SnowingResponse)
 async def api_is_snowing():
+    """Find out if it's snowing in Berlin."""
     wx = await get_weather()
     return {
         "isSnowing": is_snowing(wx),
@@ -112,16 +119,17 @@ async def api_is_snowing():
 
 @app.get("/api/willSnow", response_model=WillSnowResponse)
 async def api_will_snow():
+    """Find out if it will snow in Berlin soon."""
     wx = await get_weather()
     return {"willSnow": will_snow(wx), "dataUpdated": wx["currently"]["time"]}
 
 
-@app.get("/tomorrow/")
+@app.get("/tomorrow/", include_in_schema=False)
 async def tomorrow():
     return FileResponse("tomorrow/index.html")
 
 
-@app.get("/")
+@app.get("/", include_in_schema=False)
 async def main():
     return FileResponse("index.html")
 
