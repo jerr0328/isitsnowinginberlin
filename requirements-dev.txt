@@ -63,9 +63,9 @@ idna==2.8 \
     --hash=sha256:c357b3f628cf53ae2c4c05627ecc484553142ca23264e593d327bcde5e9c3407 \
     --hash=sha256:ea8b7f6188e6fa117537c3df7da9fc686d485087abf6ac197f9c46432f7e4a3c \
     # via -r requirements.txt, requests
-isort==5.0.7 \
-    --hash=sha256:46bd31573158ac69e598a2ab14b207e6a43a2b2872009d2ad0f62f179876037a \
-    --hash=sha256:6bc0b408d7c62e331d355085914dd28fd352635f6babd5e4605702ff3b6d9c09 \
+isort==5.1.1 \
+    --hash=sha256:069aa3af9b51c7f67311710e70514e685e868cd71cc1c39e78a5264f0d048c1e \
+    --hash=sha256:18aa2e5d9dd7314115baa20e81e242ee4a83f0e72f14c44a642749f69cc8dc26 \
     # via -r requirements-dev.in
 itsdangerous==1.1.0 \
     --hash=sha256:321b033d07f2a4136d3ec762eac9f16a10ccd60f53c0c91af90217ace7ba1f19 \
