@@ -304,9 +304,9 @@ urllib3==1.25.8 \
     --hash=sha256:2f3db8b19923a873b3e5256dc9c2dedfa883e33d87c690d9c7913e1f40673cdc \
     --hash=sha256:87716c2d2a7121198ebcb7ce7cccf6ce5e9ba539041cfbaeecfb641dc0bf6acc \
     # via requests
-uvicorn==0.11.5 \
-    --hash=sha256:50577d599775dac2301bac8bd5b540d19a9560144143c5bdab13cba92783b6e7 \
-    --hash=sha256:596eaa8645b6dbc24d6610e335f8ddf5f925b4c4b86fdc7146abb0bf0da65d17 \
+uvicorn==0.11.7 \
+    --hash=sha256:1d46a22cc55a52f5567e0c66f000ae56f26263e44cef59b7c885bf10f487ce6e \
+    --hash=sha256:b50f7f4c0c499c9b8d0280924cfbd24b90ba02456e3dc80934b9a786a291f09f \
     # via fastapi
 uvloop==0.14.0 \
     --hash=sha256:08b109f0213af392150e2fe6f81d33261bb5ce968a288eb698aad4f46eb711bd \
