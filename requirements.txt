@@ -48,12 +48,12 @@ email-validator==1.1.1 \
     --hash=sha256:5f246ae8d81ce3000eade06595b7bb55a4cf350d559e890182a1466a21f25067 \
     --hash=sha256:63094045c3e802c3d3d575b18b004a531c36243ca8d1cec785ff6bfcb04185bb \
     # via fastapi
-fastapi-camelcase==1.0.1 \
-    --hash=sha256:a74cd8088464ad2f1c80a6a66dd46654ba425d08cd0201cc97716bdcaa5195c3 \
-    # via -r requirements.in
 fastapi[all]==0.60.1 \
     --hash=sha256:96f964c3d9da8183f824857ad67c16c00ff3297e7bbca6748f60bd8485ded38c \
     --hash=sha256:9a4faa0e2b9c88a3772f7ce15eb4005bbdd27d1230ab4a0cd3517316175014a6 \
+    # via -r requirements.in
+fastapi_camelcase==1.0.2 \
+    --hash=sha256:1d852149f6c9e5bb8002839a1e024050af917f1944b9d108d56468d64c6da279 \
     # via -r requirements.in
 graphene==2.1.8 \
     --hash=sha256:09165f03e1591b76bf57b133482db9be6dac72c74b0a628d3c93182af9c5a896 \
