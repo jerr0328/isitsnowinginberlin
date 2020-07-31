@@ -51,9 +51,9 @@ email-validator==1.1.1 \
 fastapi-camelcase==1.0.1 \
     --hash=sha256:a74cd8088464ad2f1c80a6a66dd46654ba425d08cd0201cc97716bdcaa5195c3 \
     # via -r requirements.in
-fastapi[all]==0.59.0 \
-    --hash=sha256:50b58aa3e7d5bcb4a4404ac7e550cc53f0cf7ca0fd13c7fd515693dc23c9caef \
-    --hash=sha256:c04dacd3deed0fd0ffdcdb116b5a04ffa257656885be7fae7234f4f62ec4a0a9 \
+fastapi[all]==0.60.1 \
+    --hash=sha256:96f964c3d9da8183f824857ad67c16c00ff3297e7bbca6748f60bd8485ded38c \
+    --hash=sha256:9a4faa0e2b9c88a3772f7ce15eb4005bbdd27d1230ab4a0cd3517316175014a6 \
     # via -r requirements.in
 graphene==2.1.8 \
     --hash=sha256:09165f03e1591b76bf57b133482db9be6dac72c74b0a628d3c93182af9c5a896 \
@@ -277,9 +277,9 @@ sniffio==1.1.0 \
     --hash=sha256:20ed6d5b46f8ae136d00b9dcb807615d83ed82ceea6b2058cecb696765246da5 \
     --hash=sha256:8e3810100f69fe0edd463d02ad407112542a11ffdc29f67db2bf3771afb87a21 \
     # via httpcore, httpx
-starlette==0.13.4 \
-    --hash=sha256:04fe51d86fd9a594d9b71356ed322ccde5c9b448fc716ac74155e5821a922f8d \
-    --hash=sha256:0fb4b38d22945b46acb880fedee7ee143fd6c0542992501be8c45c0ed737dd1a \
+starlette==0.13.6 \
+    --hash=sha256:bd2ffe5e37fb75d014728511f8e68ebf2c80b0fa3d04ca1479f4dc752ae31ac9 \
+    --hash=sha256:ebe8ee08d9be96a3c9f31b2cb2a24dbdf845247b745664bd8a3f9bd0c977fdbc \
     # via fastapi
 ujson==3.0.0 \
     --hash=sha256:019a17e7162f26e264f1645bb41630f7103d178c092ea4bb8f3b16126c3ea210 \
