@@ -1,16 +1,17 @@
+---
 repos:
--   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.1.0
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.2.0
     hooks:
-    -   id: trailing-whitespace
-    -   id: end-of-file-fixer
-    -   id: check-yaml
-    -   id: check-added-large-files
--   repo: https://github.com/psf/black
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+  - repo: https://github.com/psf/black
     rev: 19.10b0
     hooks:
-    -   id: black
--   repo: https://github.com/pre-commit/mirrors-isort
-    rev: v5.1.1
+      - id: black
+  - repo: https://github.com/timothycrosley/isort
+    rev: 5.3.2
     hooks:
-    -   id: isort
+      - id: isort
