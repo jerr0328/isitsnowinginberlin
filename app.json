@@ -1,0 +1,16 @@
+{
+    "name": "Is it Snowing in Berlin",
+    "description": "Small app to tell you if it's snowing in Berlin, Germany.",
+    "website": "https://isitsnowinginberlin.de",
+    "repository": "https://github.com/jerr0328/isitsnowinginberlin",
+    "logo": "https://raw.githubusercontent.com/jerr0328/isitsnowinginberlin/main/static/favicon.ico",
+    "env": {
+        "DARKSKY_KEY": {
+            "description": "API Key for Dark Sky"
+        }
+    },
+    "addons": [
+        "heroku-redis",
+        "logentries"
+    ]
+}
