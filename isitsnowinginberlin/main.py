@@ -56,29 +56,32 @@ class WillSnowResponse(CamelModel):
     )
 
 
-async def store_weather(wx: dict):
+async def store_weather(wx: dict, redis: aioredis.Redis):
     logger.info("Updating cache")
     wx_str = json.dumps(wx)
-    await app.redis.set(CACHE_KEY, wx_str, expire=UPDATE_DELAY_SECONDS)
+    await redis.set(CACHE_KEY, wx_str, expire=UPDATE_DELAY_SECONDS)
+    redis.close()
 
 
-async def update_weather() -> dict:
+async def update_weather(redis: aioredis.Redis) -> dict:
     async with httpx.AsyncClient() as client:
         r = await client.get(DARKSKY_URL, params=DARKSKY_PAYLOAD)
         r.raise_for_status()
         wx = r.json()
-        asyncio.create_task(store_weather(wx))
+        asyncio.create_task(store_weather(wx, redis))
         return wx
 
 
 async def get_weather() -> dict:
-    cached_str = await app.redis.get(CACHE_KEY, encoding="utf-8")
+    redis = await aioredis.create_redis_pool(REDIS_URL)
+    cached_str = await redis.get(CACHE_KEY, encoding="utf-8")
     if cached_str:
         logger.info("Using cached weather")
+        redis.close()
         return json.loads(cached_str)
     else:
         logger.info("Need to fetch weather")
-        return await update_weather()
+        return await update_weather(redis)
 
 
 def is_snowing(wx: dict) -> bool:
@@ -93,11 +96,6 @@ def will_snow(wx: dict) -> bool:
         if now < datetime.fromtimestamp(data["time"])
     )
     return next_forecast["icon"] == "snow"
-
-
-@app.on_event("startup")
-async def setup():
-    app.redis = await aioredis.create_redis_pool(REDIS_URL)
 
 
 @app.get("/api/rawWeather")
