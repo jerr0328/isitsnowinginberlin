@@ -4,8 +4,20 @@ updates:
     directory: "/"
     schedule:
       interval: weekly
-      day: friday
-      time: "17:00"
+      day: saturday
+      time: "12:00"
+      timezone: "Europe/Berlin"
+    open-pull-requests-limit: 10
+    reviewers:
+      - jerr0328
+    commit-message:
+      prefix: "⬆️"
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: saturday
+      time: "12:00"
       timezone: "Europe/Berlin"
     open-pull-requests-limit: 10
     reviewers:
