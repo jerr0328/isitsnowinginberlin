@@ -35,7 +35,7 @@ certifi==2019.11.28 \
 chardet==3.0.4 \
     --hash=sha256:84ab92ed1c4d4f16916e05906b6b75a6c0fb5db821cc65e70cbd64a3e2a5eaae \
     --hash=sha256:fc323ffcaeaed0e0a02bf4d117757b98aed530d9ed4531e3e15460124c106691 \
-    # via httpx, requests
+    # via requests
 click==7.0 \
     --hash=sha256:2335065e6395b9e67ca716de5f7526736bfa6ceead690adf616d925bdc622b13 \
     --hash=sha256:5b94b49521f6456670fdb30cd82a4eca9412788a93fa6dd6df72c94d5a8ff2d7 \
@@ -113,9 +113,9 @@ hiredis==1.0.1 \
     --hash=sha256:fa2dc05b87d97acc1c6ae63f3e0f39eae5246565232484b08db6bf2dc1580678 \
     --hash=sha256:fe7d6ce9f6a5fbe24f09d95ea93e9c7271abc4e1565da511e1449b107b4d7848 \
     # via aioredis
-httpcore==0.10.1 \
-    --hash=sha256:73f506efa04023af0385ee71539f8e0eed12dadca100f3394358f3f7ef68273e \
-    --hash=sha256:85295a081d5cca79b1a4d5190456bc869f2f220170b7749e882ac880b087a600 \
+httpcore==0.11.0 \
+    --hash=sha256:35ffc735d746b83f8fc6d36f82600e56117b9e8adc65d0c0423264b6ebfef7bf \
+    --hash=sha256:7a6804b18e1b8fc61ec4df868cb5c679d225fffbb81e48455ee9b57792cc3ac6 \
     # via httpx
 httptools==0.1.1 \
     --hash=sha256:0a4b1b2012b28e68306575ad14ad5e9120b34fccd02a81eb08838d7e3bbb48be \
@@ -131,9 +131,9 @@ httptools==0.1.1 \
     --hash=sha256:fa3cd71e31436911a44620473e873a256851e1f53dee56669dae403ba41756a4 \
     --hash=sha256:fea04e126014169384dee76a153d4573d90d0cbd1d12185da089f73c78390437 \
     # via uvicorn
-httpx==0.14.3 \
-    --hash=sha256:3f2aa21d927ac56bfabdb82d079cf5ddd5b3147130dedc5fe8fed3a24e7a8d34 \
-    --hash=sha256:96bd4de4e6b742d672e2338720baf98518efaf85c86e0b48218e1bef9f272333 \
+httpx==0.15.4 \
+    --hash=sha256:4c81dbf98a29cb4f51f415140df56542f9d4860798d713e336642e953cddd1db \
+    --hash=sha256:7b3c07bfdcdadd92020dd4c07b15932abdcf1c898422a4e98de3d19b2223310b \
     # via -r requirements.in
 idna==2.8 \
     --hash=sha256:c357b3f628cf53ae2c4c05627ecc484553142ca23264e593d327bcde5e9c3407 \
