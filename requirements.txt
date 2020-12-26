@@ -51,9 +51,9 @@ email-validator==1.1.1 \
 fastapi-camelcase==1.0.2 \
     --hash=sha256:1d852149f6c9e5bb8002839a1e024050af917f1944b9d108d56468d64c6da279 \
     # via -r requirements.in
-fastapi[all]==0.62.0 \
-    --hash=sha256:62074dd38541d9d7245f3aacbbd0d44340c53d56186c9b249d261a18dad4874b \
-    --hash=sha256:8f4c64cd9cea67fb7dd175ca5015961efa572b9f43a8731014dac8929d86225f \
+fastapi[all]==0.63.0 \
+    --hash=sha256:63c4592f5ef3edf30afa9a44fa7c6b7ccb20e0d3f68cd9eba07b44d552058dcb \
+    --hash=sha256:98d8ea9591d8512fdadf255d2a8fa56515cdd8624dca4af369da73727409508e \
     # via -r requirements.in
 graphene==2.1.8 \
     --hash=sha256:09165f03e1591b76bf57b133482db9be6dac72c74b0a628d3c93182af9c5a896 \
@@ -225,6 +225,10 @@ pyhumps==1.3.1 \
     --hash=sha256:32452d75ec3c9e44b845c3591fc54ab4734338fcf88a34d7cb1f42017faeffc3 \
     --hash=sha256:71aaf4069eae682274dc7f33dfe24dff1f955bbcaa58f4d83d3853eb775116bc \
     # via fastapi-camelcase
+python-dotenv==0.15.0 \
+    --hash=sha256:0c8d1b80d1a1e91717ea7d526178e3882732420b03f08afea0406db6402e220e \
+    --hash=sha256:587825ed60b1711daea4832cf37524dfd404325b7db5e25ebe88c495c9f807a0 \
+    # via uvicorn
 python-multipart==0.0.5 \
     --hash=sha256:f7bb5f611fc600d15fa47b3974c8aa16e93724513b49b5f95c81e6624c83fa43 \
     # via fastapi
@@ -240,7 +244,7 @@ pyyaml==5.3.1 \
     --hash=sha256:b8eac752c5e14d3eca0e6dd9199cd627518cb5ec06add0de9d32baeee6fe645d \
     --hash=sha256:cc8955cfbfc7a115fa81d85284ee61147059a753344bc51098f3ccd69b0d7e0c \
     --hash=sha256:d13155f591e6fcc1ec3b30685d50bf0711574e2c0dfffd7644babf8b5102ca1a \
-    # via fastapi
+    # via fastapi, uvicorn
 requests==2.24.0 \
     --hash=sha256:b3559a131db72c33ee969480840fff4bb6dd111de7dd27c8ee1f820f4f00231b \
     --hash=sha256:fe75cc94a9443b9246fc7049224f75604b113c36acb93f87b80ed42c44cbb898 \
@@ -288,9 +292,9 @@ urllib3==1.25.8 \
     --hash=sha256:2f3db8b19923a873b3e5256dc9c2dedfa883e33d87c690d9c7913e1f40673cdc \
     --hash=sha256:87716c2d2a7121198ebcb7ce7cccf6ce5e9ba539041cfbaeecfb641dc0bf6acc \
     # via requests
-uvicorn==0.11.7 \
-    --hash=sha256:1d46a22cc55a52f5567e0c66f000ae56f26263e44cef59b7c885bf10f487ce6e \
-    --hash=sha256:b50f7f4c0c499c9b8d0280924cfbd24b90ba02456e3dc80934b9a786a291f09f \
+uvicorn[standard]==0.13.2 \
+    --hash=sha256:6707fa7f4dbd86fd6982a2d4ecdaad2704e4514d23a1e4278104311288b04691 \
+    --hash=sha256:d19ca083bebd212843e01f689900e5c637a292c63bb336c7f0735a99300a5f38 \
     # via fastapi
 uvloop==0.14.0 \
     --hash=sha256:08b109f0213af392150e2fe6f81d33261bb5ce968a288eb698aad4f46eb711bd \
@@ -302,6 +306,10 @@ uvloop==0.14.0 \
     --hash=sha256:bcac356d62edd330080aed082e78d4b580ff260a677508718f88016333e2c9c5 \
     --hash=sha256:e7514d7a48c063226b7d06617cbb12a14278d4323a065a8d46a7962686ce2e95 \
     --hash=sha256:f07909cd9fc08c52d294b1570bba92186181ca01fe3dc9ffba68955273dd7362 \
+    # via uvicorn
+watchgod==0.6 \
+    --hash=sha256:59700dab7445aa8e6067a5b94f37bae90fc367554549b1ed2e9d0f4f38a90d2a \
+    --hash=sha256:e9cca0ab9c63f17fc85df9fd8bd18156ff00aff04ebe5976cee473f4968c6858 \
     # via uvicorn
 websockets==8.1 \
     --hash=sha256:0e4fb4de42701340bd2353bb2eee45314651caa6ccee80dbd5f5d5978888fed5 \
