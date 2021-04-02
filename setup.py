@@ -1,6 +1,6 @@
 import setuptools
 
-with open("README.md", "r") as fh:
+with open("README.md") as fh:
     long_description = fh.read()
 
 setuptools.setup(
@@ -19,6 +19,6 @@ setuptools.setup(
         "Operating System :: OS Independent",
         "Development Status :: 3 - Alpha",
     ],
-    python_requires=">=3.7",
+    python_requires=">=3.9",
     install_requires=["aiocache[redis]", "fastapi[all]", "fastapi_camelcase", "httpx"],
 )
