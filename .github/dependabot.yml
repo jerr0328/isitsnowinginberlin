@@ -6,7 +6,7 @@ updates:
       interval: weekly
       day: saturday
       time: "12:00"
-      timezone: "Europe/Berlin"
+      timezone: "Europe/Helsinki"
     open-pull-requests-limit: 10
     reviewers:
       - jerr0328
@@ -18,7 +18,7 @@ updates:
       interval: weekly
       day: saturday
       time: "12:00"
-      timezone: "Europe/Berlin"
+      timezone: "Europe/Helsinki"
     open-pull-requests-limit: 10
     reviewers:
       - jerr0328
