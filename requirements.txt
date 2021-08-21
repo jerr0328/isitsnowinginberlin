@@ -42,6 +42,10 @@ chardet==4.0.0 \
     --hash=sha256:0d6f53a15db4120f2b08c94f11e7d93d2c911ee118b6b30a04ec3ee8310179fa \
     --hash=sha256:f864054d66fd9118f2e67044ac8981a54775ec5b67aed0441892edb553d21da5
     # via requests
+charset-normalizer==2.0.4 \
+    --hash=sha256:0c8911edd15d19223366a194a513099a302055a962bca2cec0f54b8b63175d8b \
+    --hash=sha256:f23667ebe1084be45f6ae0538e4a5a865206544097e4e8bbcacf42cd02a348f3
+    # via httpx
 click==7.1.2 \
     --hash=sha256:d2b5255c7c6349bc1bd1e59e08cd12acbbd63ce649f2588755783aa94dfb6b1a \
     --hash=sha256:dacca89f4bfadd5de3d7489b7c8a566eee0d3676333fbb50030263894c38c0dc
@@ -142,9 +146,9 @@ httptools==0.1.1 \
     --hash=sha256:fa3cd71e31436911a44620473e873a256851e1f53dee56669dae403ba41756a4 \
     --hash=sha256:fea04e126014169384dee76a153d4573d90d0cbd1d12185da089f73c78390437
     # via uvicorn
-httpx==0.18.2 \
-    --hash=sha256:979afafecb7d22a1d10340bafb403cf2cb75aff214426ff206521fc79d26408c \
-    --hash=sha256:9f99c15d33642d38bce8405df088c1c4cfd940284b4290cacbfb02e64f4877c6
+httpx==0.19.0 \
+    --hash=sha256:92ecd2c00c688b529eda11cedb15161eaf02dee9116712f621c70d9a40b2cdd0 \
+    --hash=sha256:9bd728a6c5ec0a9e243932a9983d57d3cc4a87bb4f554e1360fce407f78f9435
     # via -r requirements.in
 idna==2.10 \
     --hash=sha256:b307872f855b18632ce0c21c5e45be78c0ea7ae4c15c828c20788b26921eb3f6 \
