@@ -4,30 +4,16 @@
 #
 #    pip-compile --generate-hashes requirements.in
 #
-aiofiles==0.5.0 \
-    --hash=sha256:377fdf7815cc611870c59cbd07b68b180841d2a2b79812d8c218be02448c2acb \
-    --hash=sha256:98e6bcfd1b50f97db4980e182ddd509b7cc35909e903a8fe50d8849e02d815af
-    # via fastapi
 aioredis==1.3.1 \
     --hash=sha256:15f8af30b044c771aee6787e5ec24694c048184c7b9e54c3b60c750a4b93273a \
     --hash=sha256:b61808d7e97b7cd5a92ed574937a079c9387fdadd22bfbfa7ad2fd319ecc26e3
     # via -r requirements.in
-aniso8601==7.0.0 \
-    --hash=sha256:513d2b6637b7853806ae79ffaca6f3e8754bdd547048f5ccc1420aec4b714f1e \
-    --hash=sha256:d10a4bf949f619f719b227ef5386e31f49a2b6d453004b21f02661ccc8670c7b
-    # via graphene
 anyio==3.2.0 \
     --hash=sha256:41c4be842c284222b197a625d76a7ab85adf9d52788f563172fe180c2744b6c1 \
     --hash=sha256:89e19b1498c8a6f12277e0bd2949597e445aa1b14361fbab2c36943639ef5190
-    # via httpcore
-async-exit-stack==1.0.1 \
-    --hash=sha256:24de1ad6d0ff27be97c89d6709fa49bf20db179eaf1f4d2e6e9b4409b80e747d \
-    --hash=sha256:9b43b17683b3438f428ef3bbec20689f5abbb052aa4b564c643397330adfaa99
-    # via fastapi
-async-generator==1.10 \
-    --hash=sha256:01c7bf666359b4967d2cda0000cc2e4af16a0ae098cbffcb8472fb9e8ad6585b \
-    --hash=sha256:6ebb3d106c12920aaae42ccb6f787ef5eefdcdd166ea3d628fa8476abe712144
-    # via fastapi
+    # via
+    #   httpcore
+    #   starlette
 async-timeout==3.0.1 \
     --hash=sha256:0c3c816a028d47f659d6ff5c745cb2acf1f966da1fe5c19c77a70282b25f4c5f \
     --hash=sha256:4291ca197d287d274d0b6cb5d6f8f8f82d434ed288f962539ff18cc9012f9ea3
@@ -54,27 +40,13 @@ email-validator==1.1.2 \
     --hash=sha256:094b1d1c60d790649989d38d34f69e1ef07792366277a2cf88684d03495d018f \
     --hash=sha256:1a13bd6050d1db4475f13e444e169b6fe872434922d38968c67cea9568cce2f0
     # via fastapi
-fastapi[all]==0.68.0 \
-    --hash=sha256:c9256a89b0436223b45f53fe3a39b178f3da6be5841a2c59deedff4b676d003f \
-    --hash=sha256:f4dba2596b1e0a1f962834c3b9ec4291a7aec387a1031c6c2e25bf239d27fd0f
+fastapi[all]==0.70.0 \
+    --hash=sha256:66da43cfe5185ea1df99552acffd201f1832c6b364e0f4136c0a99f933466ced \
+    --hash=sha256:a36d5f2fad931aa3575c07a3472c784e81f3e664e3bb5c8b9c88d0ec1104f59c
     # via -r requirements.in
 fastapi-camelcase==1.0.2 \
     --hash=sha256:1d852149f6c9e5bb8002839a1e024050af917f1944b9d108d56468d64c6da279
     # via -r requirements.in
-graphene==2.1.8 \
-    --hash=sha256:09165f03e1591b76bf57b133482db9be6dac72c74b0a628d3c93182af9c5a896 \
-    --hash=sha256:2cbe6d4ef15cfc7b7805e0760a0e5b80747161ce1b0f990dfdc0d2cf497c12f9
-    # via fastapi
-graphql-core==2.3.2 \
-    --hash=sha256:44c9bac4514e5e30c5a595fac8e3c76c1975cae14db215e8174c7fe995825bad \
-    --hash=sha256:aac46a9ac524c9855910c14c48fc5d60474def7f99fd10245e76608eba7af746
-    # via
-    #   graphene
-    #   graphql-relay
-graphql-relay==2.0.1 \
-    --hash=sha256:870b6b5304123a38a0b215a79eace021acce5a466bf40cd39fa18cb8528afabb \
-    --hash=sha256:ac514cb86db9a43014d7e73511d521137ac12cf0101b2eaa5f0a3da2e10d913d
-    # via graphene
 h11==0.12.0 \
     --hash=sha256:36a3cb8c0a032f56e2da7084577878a035d3b61d104230d4bd49c0c6b555a9c6 \
     --hash=sha256:47222cb6067e4a307d535814917cd98fd0a57b6788ce715755fa2b6c28b56042
@@ -241,11 +213,6 @@ orjson==3.5.1 \
     --hash=sha256:c9270e8fa3976bf2f0c93716f38138ced8fd9c791400ccc62fe662f2759c7c74 \
     --hash=sha256:dacb683e24187b45df7ccd7fb3ff43368f376e5b065a566f33e61765bb8a1cdd
     # via fastapi
-promise==2.3 \
-    --hash=sha256:dfd18337c523ba4b6a58801c164c1904a9d4d1b1747c7d5dbf45b693a49d93d0
-    # via
-    #   graphql-core
-    #   graphql-relay
 pydantic==1.8.2 \
     --hash=sha256:021ea0e4133e8c824775a0cfe098677acf6fa5a3cbf9206a376eed3fc09302cd \
     --hash=sha256:05ddfd37c1720c392f4e0d43c484217b7521558302e7069ce8d318438d297739 \
@@ -324,18 +291,10 @@ rfc3986[idna2008]==1.4.0 \
     --hash=sha256:112398da31a3344dc25dbf477d8df6cb34f9278a94fee2625d89e4514be8bb9d \
     --hash=sha256:af9147e9aceda37c91a05f4deb128d4b4b49d6b199775fd2d2927768abdc8f50
     # via httpx
-rx==1.6.1 \
-    --hash=sha256:13a1d8d9e252625c173dc795471e614eadfe1cf40ffc684e08b8fff0d9748c23 \
-    --hash=sha256:7357592bc7e881a95e0c2013b73326f704953301ab551fbc8133a6fadab84105
-    # via graphql-core
 six==1.15.0 \
     --hash=sha256:30639c035cdb23534cd4aa2dd52c3bf48f06e5f4a941509c8bafd8ce11080259 \
     --hash=sha256:8b74bedcbbbaca38ff6d7491d76f2b06b3592611af620f8426e82dddb04a5ced
-    # via
-    #   graphene
-    #   graphql-core
-    #   graphql-relay
-    #   python-multipart
+    # via python-multipart
 sniffio==1.2.0 \
     --hash=sha256:471b71698eac1c2112a40ce2752bb2f4a4814c22a54a3eed3676bc0f5ca9f663 \
     --hash=sha256:c4666eecec1d3f50960c6bdf61ab7bc350648da6c126e3cf6898d8cd4ddcd3de
@@ -343,9 +302,9 @@ sniffio==1.2.0 \
     #   anyio
     #   httpcore
     #   httpx
-starlette==0.14.2 \
-    --hash=sha256:3c8e48e52736b3161e34c9f0e8153b4f32ec5d8995a3ee1d59410d92f75162ed \
-    --hash=sha256:7d49f4a27f8742262ef1470608c59ddbc66baf37c148e938c7038e6bc7a998aa
+starlette==0.16.0 \
+    --hash=sha256:38eb24bf705a2c317e15868e384c1b8a12ca396e5a3c3a003db7e667c43f939f \
+    --hash=sha256:e1904b5d0007aee24bdd3c43994be9b3b729f4f58e740200de1d623f8c3a8870
     # via fastapi
 typing-extensions==3.7.4.3 \
     --hash=sha256:7cb407020f00f7bfc3cb3e7881628838e69d8f3fcab2f64742a5e76b2f841918 \
