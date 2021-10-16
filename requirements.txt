@@ -58,8 +58,8 @@ fastapi[all]==0.68.0 \
     --hash=sha256:c9256a89b0436223b45f53fe3a39b178f3da6be5841a2c59deedff4b676d003f \
     --hash=sha256:f4dba2596b1e0a1f962834c3b9ec4291a7aec387a1031c6c2e25bf239d27fd0f
     # via -r requirements.in
-fastapi-camelcase==1.0.2 \
-    --hash=sha256:1d852149f6c9e5bb8002839a1e024050af917f1944b9d108d56468d64c6da279
+fastapi_camelcase==1.0.3 \
+    --hash=sha256:260249df56bc6bc1e90452659ddd84be92b5e408636d1559ce22a8a1a6d8c5fe
     # via -r requirements.in
 graphene==2.1.8 \
     --hash=sha256:09165f03e1591b76bf57b133482db9be6dac72c74b0a628d3c93182af9c5a896 \
